@@ -43,7 +43,7 @@ public class MyInteger {
 			isPrime = false;
 		// Loops through values to see if there is a number indicating the values not prime
 		for(int i = 2; i < value; i++) {
-			if(value % 2 == 0)
+			if(value % i == 0)
 				isPrime = false;
 		}
 		// Returns true or false depending on whether the value is prime
@@ -78,7 +78,7 @@ public class MyInteger {
 			isPrime = false;
 		// Loop through values to see if the number is prime.
 		for(int i = 2; i < value; i++){
-			if(value%2 == 0)
+			if(value%i == 0)
 				isPrime = false;
 		}
 		return isPrime;
@@ -107,7 +107,7 @@ public class MyInteger {
 		if(number.value < 2)
 			isPrime = false;
 		for(int i = 2; i < number.value; i++) {
-			if(number.value % 2 == 0)
+			if(number.value % i == 0)
 				isPrime = false;
 		}
 		return isPrime;
@@ -133,16 +133,14 @@ public class MyInteger {
 	
 	// static method to convert an array of numeric values to an int
 	public int parseInt(char[] values){
-		//Initialize the converted value 
-		int converted = 0;
-		// For each value of the array add it to the converted integer.
-		// THe Math.Pow(10,i) pushes each integer over to the left.
-		// position is used because for an array ex. [1,2,3] has the ones digit as the last value.
-		int position = values.length - 1;
-		for(int i = 0; i < values.length; i++){
-			converted += Math.pow(10, i) * Character.getNumericValue(values[(position -i)]);
+		// Initiate the sum of the values
+		int sum = 0;
+		for(int i = 0; i < values.length; i++)
+		{
+			if(Character.isDigit(values[i]))
+				sum += values[i];
 		}
-		return converted;
+		return sum;
 	}
 	
 	// static method that converts a string to an int
